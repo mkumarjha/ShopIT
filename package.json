@@ -1,0 +1,28 @@
+{
+  "name": "shopit",
+  "version": "1.0.0",
+  "description": "ecommerce website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "export NODE_ENV=DEVELOPMENT && nodemon backend/server",
+    "prod": "export NODE_ENV=PRODUCTION && nodemon backend/server",
+    "seeder": "node backend/utils/seeder.js"
+  },
+  "author": "Mithilesh Jha",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.8.3",
+    "nodemailer": "^6.8.0",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
