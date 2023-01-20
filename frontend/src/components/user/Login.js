@@ -17,23 +17,17 @@ const Login = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()    
     const { isAuthenticated, error, loading } = useSelector(state=> state.auth);
-    useEffect(() =>{
 
+    useEffect(() =>{
         if(isAuthenticated){
             navigate('/')
-        }
-
-
+        }        
         if(error){
             alert.error(error);
             dispatch(clearErrors());        
         }
     },[dispatch, alert, isAuthenticated, error, navigate])
 
-    const [formData, setFormData] = useState({
-        email: '',
-        password: ''
-    })
 
     const submitHandler = (e) => {
         e.preventDefault();

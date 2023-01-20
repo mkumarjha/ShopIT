@@ -37,8 +37,8 @@ const Header = () => {
                     <span className="ml-1" id="cart_count">2</span>
                 </Link>
                 { user ? (
-                    <div className='dropdown d-inline mr-5'>
-                        <Link to="#!" className="btn dropdown-toggle text-white" type="button" id="dropDownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div className='dropdown d-inline mr-3'>
+                        <Link to="#!" className="btn dropdown-toggle text-white mr-1" type="button" id="dropDownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <figure className="avatar avatar-nav">
                                 <img 
                                     src={ user.avatar && user.avatar.url } 

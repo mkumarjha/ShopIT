@@ -1,5 +1,5 @@
 import React,{Fragment, useState, useEffect } from 'react'
-import { Link, useNavigate } from'react-router-dom'
+import { useNavigate } from'react-router-dom'
 
 import MetaData from '../layout/MetaData'
 import { useAlert } from 'react-alert'
@@ -11,8 +11,7 @@ const Register = () => {
     const [user, setUser] = useState({
         name: '',
         email: '',
-        password: '',
-        password2: ''
+        password: ''       
     })
 
     const { name, email, password } = user;
@@ -47,7 +46,7 @@ const Register = () => {
     }
 
     const onChange = (e) => {
-        if(e.target.name== 'avatar'){
+        if(e.target.name === 'avatar'){
             const reader = new FileReader();
             reader.onload = () => {
                 //created
