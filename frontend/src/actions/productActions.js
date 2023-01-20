@@ -11,11 +11,18 @@ import  {
 
 }   from '../constants/productConstants'
 
-export const getProducts = (currentPage = 1) => async (dispatch) => {
+export const getProducts = (keyword='', currentPage = 1, price, category, rating=0 ) => async (dispatch) => {
     try {
+        
         dispatch({ type: ALL_PRODUCTS_REQUEST });
+        let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}&ratings[gte]=${rating}`
 
-        const { data } = await axios.get(`/api/v1/products?page=${currentPage}`);
+        if(category){
+            link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}&category=${category}&ratings[gte]=${rating}`
+ 
+        }
+
+        const { data } = await axios.get(link);
 
         dispatch({
             type: ALL_PRODUCTS_SUCCESS,
@@ -47,6 +54,7 @@ export const getProductDetails = (id) => async (dispatch) => {
     }
 }
 
+// Clear Errors
 export const clearErrors = () => async (dispatch) =>{
     dispatch({
         type: CLEAR_ERRORS
