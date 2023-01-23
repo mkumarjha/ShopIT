@@ -1,5 +1,5 @@
 import React,{Fragment, useState, useEffect } from 'react'
-import { Link, useNavigate } from'react-router-dom'
+import { Link, useNavigate, useLocation } from'react-router-dom'
 import Loader from '../layout/Loader'
 import MetaData from '../layout/MetaData'
 import { useAlert } from 'react-alert'
@@ -15,18 +15,21 @@ const Login = () => {
     const [ password, setPassword ] = useState('')
     const alert = useAlert()
     const dispatch = useDispatch()
-    const navigate = useNavigate()    
+    const navigate = useNavigate()
+    const location = useLocation()    
     const { isAuthenticated, error, loading } = useSelector(state=> state.auth);
 
+   
+    const redirect = location.search ? location.search.split('=')[1] : '/';
     useEffect(() =>{
         if(isAuthenticated){
-            navigate('/')
+            navigate(`/${redirect}`);
         }        
         if(error){
             alert.error(error);
             dispatch(clearErrors());        
         }
-    },[dispatch, alert, isAuthenticated, error, navigate])
+    },[dispatch, alert, isAuthenticated, error, navigate, redirect])
 
 
     const submitHandler = (e) => {

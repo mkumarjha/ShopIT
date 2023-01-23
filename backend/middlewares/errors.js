@@ -9,7 +9,7 @@ module.exports = (err, req, res, next) => {
         res.status(err.statusCode).json({
             success: false,
             error: err,
-            errMessage: err.message,
+            error: err.message,
             stack: err.stack
         })
     }
@@ -17,6 +17,7 @@ module.exports = (err, req, res, next) => {
     if(process.env.NODE_ENV === 'PRODUCTION'){
         let error = {...err}
         error.message = err.message;
+        console.log(error)
 
         //wrong Mongoose Object Id Error
         if(err.name === 'CastError'){
@@ -50,9 +51,7 @@ module.exports = (err, req, res, next) => {
 
         res.status(error.statusCode).json({
             success: false,
-            message: error.message || 'Internal Server Error'
+            error: error.message || 'Internal Server Error'
         })
-    }
-
-    
+    }    
 }
