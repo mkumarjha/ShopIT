@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useStripe, useElements, CardNumberElement, CardExpiryElement, CardCvcElement } from '@stripe/react-stripe-js'
 import axios from 'axios'
+import { createOrder, clearErrors } from '../../actions/orderActions'
 
 
 
@@ -15,7 +16,7 @@ const Payment = () => {
     const options = {
         style: {
                 base: {
-                    fontSize: '16'
+                    fontSize: '16px'
                 },
                 invalid: {
                     color: `#9e2146`
@@ -33,11 +34,27 @@ const Payment = () => {
     
     const { user } = useSelector(state=> state.auth)
     const {cartItems, shippingInfo} = useSelector(state => state.cart)
-
+    const { error } = useSelector(state => state.newOrder)
     useEffect(() => {
+        if(error){
+            alert.error(error)
+            dispatch(clearErrors())
+        }
+    },[dispatch, alert, error])
 
-    },[])
+    const order = {
+        orderItems: cartItems,
+        shippingInfo
+    }
+    
     const orderInfo = JSON.parse(sessionStorage.getItem('orderInfo'))
+    if(orderInfo){
+        order.itemsPrice = orderInfo.itemsPrice
+        order.shippingPrice = orderInfo.shippingPrice
+        order.taxPrice = orderInfo.taxPrice
+        order.totalPrice = orderInfo.totalPrice
+    }
+
     const paymentData = {
         amount: Math.round(orderInfo.totalPrice * 100) //sending it in sends
     }
@@ -48,7 +65,7 @@ const Payment = () => {
         try{
             const config = {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json'                    
                 }
             }
 
@@ -77,6 +94,13 @@ const Payment = () => {
                 // the payment is processed 
                 if(result.paymentIntent.status === 'succeeded'){
                     // To do new order
+                    order.paymentInfo = {
+                        id: result.paymentIntent.id,
+                        status: result.paymentIntent.status
+                    }
+
+                    dispatch(createOrder(order))
+
                     navigate('/success')
                 }else{
                     alert.error('There is some network issues while payment is processing')
@@ -133,7 +157,7 @@ const Payment = () => {
                         type="submit"
                         className="btn btn-block py-3"
                         >
-                        Pay {` - ${orderInfo && orderInfo.totalPrice }`}
+                        Pay {` - $${orderInfo && orderInfo.totalPrice }`}
                         </button>
             
                     </form>
