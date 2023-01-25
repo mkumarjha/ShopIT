@@ -19,6 +19,8 @@ import Dashboard from './components/admin/Dashboard';
 import ProductsList from './components/admin/ProductsList';
 import NewProduct from './components/admin/NewProduct';
 import UpdateProduct from './components/admin/UpdateProduct';
+import OrdersList from './components/admin/OrdersList';
+import ProcessOrder from './components/admin/ProcessOrder';
 
 // cart Imports
 import Cart from './components/cart/Cart';
@@ -104,6 +106,8 @@ function App() {
         <Route path="/admin/products" element={ <ProtectedRoute isAdmin={ true }> <ProductsList /> </ProtectedRoute> } />
         <Route path="/admin/product" element={ <ProtectedRoute isAdmin={ true }> <NewProduct /> </ProtectedRoute> } />
         <Route path="/admin/product/:id" element={ <ProtectedRoute isAdmin={ true }> <UpdateProduct /> </ProtectedRoute> } />
+        <Route path="/admin/orders" element={ <ProtectedRoute isAdmin={ true }> <OrdersList /> </ProtectedRoute> } />
+        <Route path="/admin/order/:id" element={ <ProtectedRoute isAdmin={ true }> <ProcessOrder /> </ProtectedRoute> } />
       
       </Routes>
         {!loading && user.role!=='admin' && (

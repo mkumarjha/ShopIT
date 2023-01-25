@@ -29,7 +29,7 @@ const Sidebar = () => {
                         <a href="/admin/users"><i className="fa fa-users"></i> Users</a>
                     </li> 
                     <li>
-                        <a href="/admin/reviews"><i className="fa fa-star"></i> Users</a>
+                        <a href="/admin/reviews"><i className="fa fa-star"></i> Reviews</a>
                     </li>       
                 </ul>
             </nav>
