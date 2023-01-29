@@ -23,7 +23,7 @@ cloudinary.config({
 }); 
 
 //connecting to database
-connectDatabse();
+const conn = connectDatabse();
 
 const server = app.listen(process.env.PORT,()=>{
     console.log(`server started on port: ${process.env.PORT} in ${process.env.NODE_ENV} mode`)
