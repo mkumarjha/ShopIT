@@ -242,12 +242,13 @@ exports.allUsers = catchAsyncErrors(async (req, res, next) => {
 
 // Get user details => /api/v1/admin/user/:id
 exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
+    console.log(req.params.id);
     const user = await User.findById(req.params.id);
     if(!user) {
         return next(new ErrorHandler(`User does not found with id: ${req.params.id}`, 404));
     }
     res.status(200).json({
-        status:'success',
+        success: true,
         user
     });
 });
@@ -260,12 +261,13 @@ exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler(`User does not found with id: ${req.params.id}`, 404));
     }
 
-    // remove avtar: TODO
+    // remove avtar
+    const image_id = user.avatar.public_id;
+    await cloudinary.v2.uploader.destroy(image_id);
     
     await user.remove();
 
     res.status(200).json({
-        status:'success',
-        user
+        success: true
     });
 });

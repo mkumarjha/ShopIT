@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { productReducers, productDetailReducer, newProductReducer, newReviewReducer, productReducer  } from './reducers/productReducers'
-import { authReducer, userReducer, forgotPasswordReducer } from './reducers/userReducers';
+import { productReducers, productDetailReducer, newProductReducer, newReviewReducer, productReducer, productReviewsReducer, reviewReducer  } from './reducers/productReducers'
+import { authReducer, userReducer, forgotPasswordReducer, allUserReducer, userDetailsReducer } from './reducers/userReducers';
 import { cartReducer } from './reducers/cartReducers';
 import { newOrderReducer, myOrdersReducer, orderDetailsReducer, allOrdersReducer, orderReducer } from './reducers/orderReducers';
 
@@ -20,6 +20,8 @@ export default configureStore({
     newProduct: newProductReducer,
     auth: authReducer,
     user: userReducer,
+    allUsers: allUserReducer, 
+    userDetails: userDetailsReducer,
     forgotPassword: forgotPasswordReducer,
     cart: cartReducer,
     newOrder: newOrderReducer,
@@ -28,7 +30,9 @@ export default configureStore({
     newReview: newReviewReducer,
     product: productReducer,
     allOrders: allOrdersReducer,
-    order: orderReducer
+    order: orderReducer,
+    productReviews: productReviewsReducer,
+    review: reviewReducer
   },
   preloadedState: initialState
 });

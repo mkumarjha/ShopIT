@@ -21,6 +21,9 @@ import NewProduct from './components/admin/NewProduct';
 import UpdateProduct from './components/admin/UpdateProduct';
 import OrdersList from './components/admin/OrdersList';
 import ProcessOrder from './components/admin/ProcessOrder';
+import UsersList from './components/admin/UsersList';
+import UpdateUser from './components/admin/UpdateUser';
+import ProductReviews from './components/admin/ProductReviews';
 
 // cart Imports
 import Cart from './components/cart/Cart';
@@ -108,7 +111,10 @@ function App() {
         <Route path="/admin/product/:id" element={ <ProtectedRoute isAdmin={ true }> <UpdateProduct /> </ProtectedRoute> } />
         <Route path="/admin/orders" element={ <ProtectedRoute isAdmin={ true }> <OrdersList /> </ProtectedRoute> } />
         <Route path="/admin/order/:id" element={ <ProtectedRoute isAdmin={ true }> <ProcessOrder /> </ProtectedRoute> } />
-      
+        <Route path="/admin/users" element={ <ProtectedRoute isAdmin={ true }> <UsersList /> </ProtectedRoute> } />
+        <Route path="/admin/user/:id" element={ <ProtectedRoute isAdmin={ true }> <UpdateUser /> </ProtectedRoute> } />
+        <Route path="/admin/reviews" element={ <ProtectedRoute isAdmin={ true }> <ProductReviews /> </ProtectedRoute> } />
+
       </Routes>
         {!loading && user.role!=='admin' && (
           <Footer />

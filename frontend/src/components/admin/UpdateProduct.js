@@ -48,7 +48,7 @@ const UpdateProduct = () => {
 
     useEffect(() => {
 
-        if(product && product._id !== productId){
+        if((product && product._id !== productId ) || isUpdated){
             dispatch(getProductDetails(productId));
         }else{
             
