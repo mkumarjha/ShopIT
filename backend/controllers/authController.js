@@ -242,7 +242,7 @@ exports.allUsers = catchAsyncErrors(async (req, res, next) => {
 
 // Get user details => /api/v1/admin/user/:id
 exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
-    console.log(req.params.id);
+    
     const user = await User.findById(req.params.id);
     if(!user) {
         return next(new ErrorHandler(`User does not found with id: ${req.params.id}`, 404));
