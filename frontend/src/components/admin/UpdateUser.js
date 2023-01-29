@@ -26,7 +26,7 @@ const UpdateUser = () => {
 
     useEffect(() =>{
 
-        if (user && user._id !== userId || isUpdated) {
+        if (user && (user._id !== userId || isUpdated)) {
             dispatch(getUserDetails(userId))
         } else {
             setName(user.name);

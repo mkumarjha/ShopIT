@@ -66,7 +66,7 @@ function App() {
 
   }, [])
   
-  const {user , loading} = useSelector( state => state.auth)
+  const {user,isAuthenticated, loading} = useSelector( state => state.auth)
   
   return (
     <Router>
@@ -116,9 +116,9 @@ function App() {
         <Route path="/admin/reviews" element={ <ProtectedRoute isAdmin={ true }> <ProductReviews /> </ProtectedRoute> } />
 
       </Routes>
-        {!loading && user.role!=='admin' && (
+        {!loading && (!isAuthenticated || user.role!=='admin') && (
           <Footer />
-        )}
+        )} 
       
     </div>
     </Router>
