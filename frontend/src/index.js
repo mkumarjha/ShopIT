@@ -8,8 +8,6 @@ import AlertTemplate from 'react-alert-template-basic'
 import { Provider } from 'react-redux';
 import store from './store';
 
-
-
 const options = {
   // you can also just use 'bottom center'
   position: positions.BOTTOM_CENTER,
