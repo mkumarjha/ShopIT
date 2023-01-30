@@ -5,9 +5,11 @@
   "main": "server.js",
   "scripts": {
     "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
     "dev": "export NODE_ENV=DEVELOPMENT && nodemon backend/server",
     "prod": "export NODE_ENV=PRODUCTION && nodemon backend/server",
-    "seeder": "node backend/utils/seeder.js"
+    "seeder": "node backend/utils/seeder.js",
+    "render-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "Mithilesh Jha",
   "license": "ISC",

@@ -42,6 +42,7 @@ if(process.env.NODE_ENV === 'PRODUCTION'){
     }) 
 }
 
+
 //middleware to handle errors
 app.use(errorMiddleware);
 
