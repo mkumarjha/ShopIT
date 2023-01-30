@@ -2,16 +2,17 @@
   "name": "shopit",
   "version": "1.0.0",
   "description": "ecommerce website",
-  "main": "server.js",
+  "main": "./backend/server.js",
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
-    "client": "npm start --prefix frontend",
     "dev": "export NODE_ENV=DEVELOPMENT && nodemon backend/server",
     "prod": "export NODE_ENV=PRODUCTION && nodemon backend/server",
     "seeder": "node backend/utils/seeder.js",
-    "data:destroy": "node backend/utils/seeder -d",
-    "render-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm --prefix ./frontend run build"
+    "data:destroy": "node backend/utils/seeder -d"
+  },
+  "engines": {
+    "node": "18.13.0"
   },
   "author": "Mithilesh Jha",
   "license": "ISC",
