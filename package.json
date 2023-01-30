@@ -6,10 +6,12 @@
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
     "dev": "export NODE_ENV=DEVELOPMENT && nodemon backend/server",
     "prod": "export NODE_ENV=PRODUCTION && nodemon backend/server",
     "seeder": "node backend/utils/seeder.js",
-    "render-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend"
+    "data:destroy": "node backend/utils/seeder -d",
+    "render-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "Mithilesh Jha",
   "license": "ISC",
@@ -25,7 +27,8 @@
     "mongoose": "^6.8.3",
     "nodemailer": "^6.8.0",
     "stripe": "^11.7.0",
-    "validator": "^13.7.0"
+    "validator": "^13.7.0",
+    "nodemon": "^2.0.20"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
