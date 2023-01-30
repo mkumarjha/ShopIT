@@ -11,7 +11,7 @@
     "prod": "export NODE_ENV=PRODUCTION && nodemon backend/server",
     "seeder": "node backend/utils/seeder.js",
     "data:destroy": "node backend/utils/seeder -d",
-    "render-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+    "render-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm --prefix frontend run build"
   },
   "author": "Mithilesh Jha",
   "license": "ISC",
