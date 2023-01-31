@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
  
 const ProtectedRoute = ({ isAdmin, children }) => {
     const {
@@ -9,7 +9,7 @@ const ProtectedRoute = ({ isAdmin, children }) => {
         user,
     } = useSelector((state) => state.auth);
  
-    const dispatch = useDispatch();
+    
     const navigate = useNavigate();
  
     if (loading) return <h1>loading...</h1>;

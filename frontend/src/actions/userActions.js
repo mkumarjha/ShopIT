@@ -130,6 +130,7 @@ export const allUsers = () => async (dispatch) => {
 export const logout = () => async (dispatch) => {
     try {
         await axios.get(`${process.env.REACT_APP_API_DOMAIN}/api/v1/logout`);
+        localStorage.removeItem("token");
         dispatch({ 
             type: LOGOUT_SUCCESS,            
         });
