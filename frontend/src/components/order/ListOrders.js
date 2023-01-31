@@ -1,5 +1,5 @@
 import React,{ Fragment, useEffect } from 'react'
-import {Link, useNavigate } from 'react-router-dom'
+import {Link } from 'react-router-dom'
 import { MDBDataTable } from 'mdbreact'
 
 import MetaData  from '../layout/MetaData'
@@ -11,7 +11,6 @@ import { myOrders, clearErrors } from '../../actions/orderActions'
 
 const ListOrders = () => {
     const alert = useAlert()
-    const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const { loading, error, orders } = useSelector(state => state.myOrders)   
@@ -56,7 +55,7 @@ const ListOrders = () => {
             rows: []
         }
 
-        orders.forEach(order => {
+        orders && orders.forEach(order => {
             data.rows.push({
                 id: order._id,
                 numOfItems: order.orderItems.length,

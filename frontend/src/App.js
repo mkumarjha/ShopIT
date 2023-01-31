@@ -53,12 +53,14 @@ import {loadStripe} from '@stripe/stripe-js';
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState('')
 
+  axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
+  
   useEffect(() => {
     store.dispatch(loadUser())
 
     async function getStripApiKey() {
-      const { data } = await axios.get(`${process.env.REACT_APP_API_DOMAIN}/api/v1/stripeapi`);
 
+      const { data } = await axios.get(`${process.env.REACT_APP_API_DOMAIN}/api/v1/stripeapi`);
       setStripeApiKey(data.stripeApiKey)
     }
 
@@ -67,6 +69,9 @@ function App() {
   }, [])
   
   const {user,isAuthenticated, loading} = useSelector( state => state.auth)
+
+  
+
   
   return (
     <Router>
