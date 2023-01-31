@@ -4,6 +4,7 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Home from './components/Home';
 import ProductDetails from './components/product/ProductDetails';
+import PageNotFound from './components/error/PageNotFound';
 
 // auth or user imports 
 import Login from './components/user/Login';
@@ -107,7 +108,7 @@ function App() {
           <Route path="/me" element={<ProtectedRoute> <Profile /> </ProtectedRoute>} />
           <Route path="/me/update" element={<ProtectedRoute> <UpdateProfile /> </ProtectedRoute>} />
           <Route path="/password/update" element={<ProtectedRoute> <UpdatePassword /> </ProtectedRoute>} />
-          </Routes>
+          </Routes>  
       </div>
       <Routes>
         <Route path="/dashboard" element={ <ProtectedRoute isAdmin={ true }> <Dashboard /> </ProtectedRoute> } />
@@ -119,7 +120,7 @@ function App() {
         <Route path="/admin/users" element={ <ProtectedRoute isAdmin={ true }> <UsersList /> </ProtectedRoute> } />
         <Route path="/admin/user/:id" element={ <ProtectedRoute isAdmin={ true }> <UpdateUser /> </ProtectedRoute> } />
         <Route path="/admin/reviews" element={ <ProtectedRoute isAdmin={ true }> <ProductReviews /> </ProtectedRoute> } />
-
+        <Route path="*" element={ <PageNotFound /> } />
       </Routes>
         {!loading && (!isAuthenticated || user.role!=='admin') && (
           <Footer />

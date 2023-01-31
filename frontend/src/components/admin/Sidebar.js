@@ -26,10 +26,10 @@ const Sidebar = () => {
                         <Link to="/admin/orders"><i className="fa fa-shopping-basket"></i> Orders</Link>
                     </li>
                     <li>
-                        <a href="/admin/users"><i className="fa fa-users"></i> Users</a>
+                    <Link to="/admin/users"><i className="fa fa-users"></i> Users</Link>
                     </li> 
                     <li>
-                        <a href="/admin/reviews"><i className="fa fa-star"></i> Reviews</a>
+                        <Link to="/admin/reviews"><i className="fa fa-star"></i> Reviews</Link>
                     </li>       
                 </ul>
             </nav>
