@@ -120,7 +120,7 @@ function App() {
         <Route path="/admin/users" element={ <ProtectedRoute isAdmin={ true }> <UsersList /> </ProtectedRoute> } />
         <Route path="/admin/user/:id" element={ <ProtectedRoute isAdmin={ true }> <UpdateUser /> </ProtectedRoute> } />
         <Route path="/admin/reviews" element={ <ProtectedRoute isAdmin={ true }> <ProductReviews /> </ProtectedRoute> } />
-        <Route path="*" element={ <PageNotFound /> } />
+        
       </Routes>
         {!loading && (!isAuthenticated || user.role!=='admin') && (
           <Footer />
